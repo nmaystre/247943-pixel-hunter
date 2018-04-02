@@ -1,9 +1,14 @@
-const NEXT_KEYCODE = 39;
-const PREV_KEYCODE = 37;
+//const NEXT_KEYCODE = 39;
+//const PREV_KEYCODE = 37;
 
-import {getElementFromTemplate} from "./getElement";
 import {moduleGreetingElement} from "./greeting";
-
+import {moduleRulesElement} from "./rules";
+import {moduleGameFirstElement} from "./game-1";
+import {moduleGameSecondElement} from "./game-2";
+import {moduleGameThirdElement} from "./game-3";
+import {moduleStatsElement} from "./stats";
+import {setPages, appPageShow, showNextPage} from "./appPageShow.js";
+import {getElementFromTemplate} from "./getElement";
 
 const moduleIntroElement = getElementFromTemplate(`<div id="main" class="central__content">
     <div id="intro" class="intro">
@@ -22,32 +27,16 @@ const moduleIntroElement = getElementFromTemplate(`<div id="main" class="central
     </div>
   </footer>`);
 
-const allElements = [moduleIntroElement, moduleGreetingElement];
-
-const appPageShow = (i) => {
-  const appPage = allElements[i].content;
-  // const appPage = appPageTemplate.cloneNode(true);
-  const appContainer = document.querySelector(`.central`);
-  appContainer.innerHTML = ``;
-  appContainer.appendChild(appPage);
+moduleIntroElement.getElementsByClassName("intro__asterisk")[0].onclick = () => {
+  showNextPage();
 };
 
-let currentPage = 0;
+//console.log(allElements);
 
-const showNextPage = () => {
-  if (currentPage < allElements.length - 1) {
-    currentPage = currentPage + 1;
-    appPageShow(currentPage);
-  }
-};
+setPages([moduleIntroElement, moduleGreetingElement, moduleRulesElement, moduleGameFirstElement, moduleGameSecondElement, moduleGameThirdElement, moduleStatsElement]);
 
-const showPrevPage = () => {
-  if (currentPage > 0) {
-    currentPage = currentPage - 1;
-    appPageShow(currentPage);
-  }
-};
 
+/*
 document.addEventListener(`keydown`, (e) => {
   if (e.keyCode === NEXT_KEYCODE && e.altKey) {
     showNextPage();
@@ -55,6 +44,7 @@ document.addEventListener(`keydown`, (e) => {
     showPrevPage();
   }
 });
+*/
 
-appPageShow(currentPage);
+appPageShow(0);
 

@@ -1,6 +1,6 @@
 import {getElementFromTemplate} from "./getElement";
 
-export const moduleStatsElement = getElementFromTemplate(`<template id="stats">
+export const moduleStatsElement = getElementFromTemplate(`<div id="stats">
   <header class="header">
     <div class="header__back">
       <button class="back">

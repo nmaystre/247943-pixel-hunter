@@ -1,6 +1,6 @@
 import {getElementFromTemplate} from "./getElement";
 
-export const moduleRulesElement = getElementFromTemplate(`<template id="rules">
+export const moduleRulesElement = getElementFromTemplate(`<div id="rules">
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -35,4 +35,4 @@ export const moduleRulesElement = getElementFromTemplate(`<template id="rules">
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
   </footer>
-</template>`);
+</div>`);

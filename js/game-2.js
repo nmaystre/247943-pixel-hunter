@@ -1,6 +1,6 @@
 import {getElementFromTemplate} from "./getElement";
 
-export const moduleGameSecondElement = getElementFromTemplate(`<template id="game-2">
+export const moduleGameSecondElement = getElementFromTemplate(`<div id="game-2">
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -55,4 +55,4 @@ export const moduleGameSecondElement = getElementFromTemplate(`<template id="gam
       <a href="https://vk.com/htmlacademy" class="social-link  social-link--vk">Вконтакте</a>
     </div>
   </footer>
-</template>`);
+</div>`);
