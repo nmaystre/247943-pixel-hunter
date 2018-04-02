@@ -1,4 +1,5 @@
 import {getElementFromTemplate} from "./getElement";
+import {showNextPage} from "./appPageShow";
 
 export const moduleRulesElement = getElementFromTemplate(`<div id="rules">
   <header class="header">
@@ -36,3 +37,17 @@ export const moduleRulesElement = getElementFromTemplate(`<div id="rules">
     </div>
   </footer>
 </div>`);
+
+
+const userNameInput = moduleRulesElement.querySelector(`.rules__input`);
+const userNameSubmit = moduleRulesElement.querySelector(`.rules__button`);
+
+userNameInput.addEventListener(`input`, (e) => {
+  if (e.target.value.length > 2) {
+    userNameSubmit.disabled = false;
+  }
+});
+
+userNameSubmit.onclick = () => {
+  showNextPage();
+};

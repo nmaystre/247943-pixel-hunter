@@ -56,3 +56,15 @@ export const moduleGameSecondElement = getElementFromTemplate(`<div id="game-2">
     </div>
   </footer>
 </div>`);
+
+const gameAnswer = document.getElementsByClassName(`game__answer`);
+console.log(gameAnswer);
+
+for (let i = 0; i < gameAnswer.length; i++) {
+  console.log(gameAnswer[i]);
+  gameAnswer[i].onclick = () => {
+    console.log('111');
+  };
+}
+
+console.log(gameAnswer.length);

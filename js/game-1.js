@@ -1,4 +1,5 @@
 import {getElementFromTemplate} from "./getElement";
+import {showNextPage} from "./appPageShow";
 
 export const moduleGameFirstElement = getElementFromTemplate(`<div id="game-1">
   <header class="header">
@@ -67,3 +68,23 @@ export const moduleGameFirstElement = getElementFromTemplate(`<div id="game-1">
     </div>
   </footer>
 </div>`);
+
+const gameSelectForm = moduleGameFirstElement.getElementsByClassName(`game__option`);
+
+window.onclick = () => {
+  let checkCount = 0;
+
+  for (let i = 0; i < gameSelectForm.length; i++) {
+    const gameSelectRadio = document.getElementsByName(`question` + (i + 1));
+
+    for (let q = 0; q < gameSelectRadio.length; q++) {
+      if (gameSelectRadio[q].checked) {
+        checkCount = checkCount + 1;
+      }
+    }
+  }
+
+  if (checkCount === 2) {
+    showNextPage();
+  }
+};

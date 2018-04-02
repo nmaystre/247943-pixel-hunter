@@ -1,6 +1,3 @@
-//const NEXT_KEYCODE = 39;
-//const PREV_KEYCODE = 37;
-
 import {moduleGreetingElement} from "./greeting";
 import {moduleRulesElement} from "./rules";
 import {moduleGameFirstElement} from "./game-1";
@@ -27,24 +24,12 @@ const moduleIntroElement = getElementFromTemplate(`<div id="main" class="central
     </div>
   </footer>`);
 
-moduleIntroElement.getElementsByClassName("intro__asterisk")[0].onclick = () => {
+moduleIntroElement.getElementsByClassName(`intro__asterisk`)[0].onclick = () => {
   showNextPage();
 };
 
-//console.log(allElements);
-
-setPages([moduleIntroElement, moduleGreetingElement, moduleRulesElement, moduleGameFirstElement, moduleGameSecondElement, moduleGameThirdElement, moduleStatsElement]);
-
-
-/*
-document.addEventListener(`keydown`, (e) => {
-  if (e.keyCode === NEXT_KEYCODE && e.altKey) {
-    showNextPage();
-  } else if (e.keyCode === PREV_KEYCODE && e.altKey) {
-    showPrevPage();
-  }
-});
-*/
+// setPages([moduleIntroElement, moduleGreetingElement, moduleRulesElement, moduleGameFirstElement, moduleGameSecondElement, moduleGameThirdElement, moduleStatsElement]);
+setPages([moduleGameSecondElement, moduleGameThirdElement, moduleStatsElement]);
 
 appPageShow(0);
 
