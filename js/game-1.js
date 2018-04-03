@@ -1,6 +1,8 @@
 import {getElementFromTemplate} from "./getElement";
+import {appPageShow} from "./appPageShow";
+import game2 from "./game-2";
 
-export const moduleGameFirstElement = getElementFromTemplate(`<div id="game-1">
+const template = getElementFromTemplate(`<div id="game-1">
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -67,3 +69,27 @@ export const moduleGameFirstElement = getElementFromTemplate(`<div id="game-1">
     </div>
   </footer>
 </div>`);
+
+export default () => {
+    const currentPage = template.cloneNode(true);
+    currentPage.addEventListener(`click`, () => {
+        const gameQuestion = currentPage.querySelectorAll(`.game__option`);
+
+
+        let checkedGameSelect = 0;
+        for (let i = 0; i < gameQuestion.length; i++) {
+            const gameSelect = gameQuestion[i].querySelectorAll(`.game__answer`);
+
+            for (let a = 0; a < gameSelect.length; a++) {
+                if (gameSelect[a].firstElementChild.checked === true) {
+                    checkedGameSelect = checkedGameSelect + 1;
+                }
+            }
+        }
+
+        if (checkedGameSelect === gameQuestion.length) {
+            appPageShow(game2());
+        }
+    });
+    return currentPage;
+};

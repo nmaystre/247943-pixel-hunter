@@ -1,7 +1,8 @@
 import {getElementFromTemplate} from "./getElement";
-import {showNextPage} from "./appPageShow";
+import {appPageShow} from "./appPageShow.js";
+import rules from './rules.js';
 
-const moduleGreetingElement = getElementFromTemplate(`<div id="greeting">
+const template = getElementFromTemplate(`<div id="greeting">
   <div class="greeting central--blur">
     <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
     <h1 class="greeting__asterisk">*</h1>
@@ -27,9 +28,11 @@ const moduleGreetingElement = getElementFromTemplate(`<div id="greeting">
   </footer>
 </div>`);
 
-moduleGreetingElement.getElementsByClassName("greeting__continue")[0].onclick = () => {
-  showNextPage();
+export default () => {
+  const currentPage = template.cloneNode(true);
+    currentPage.querySelector(`.greeting__continue`).addEventListener(`click`, () => {
+        appPageShow(rules());
+    });
+  return currentPage;
 };
 
-
-export {moduleGreetingElement};

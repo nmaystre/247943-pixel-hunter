@@ -1,6 +1,9 @@
 import {getElementFromTemplate} from "./getElement";
+import {appPageShow} from "./appPageShow";
+import game3 from "./game-3";
 
-export const moduleGameSecondElement = getElementFromTemplate(`<div id="game-2">
+
+const template = getElementFromTemplate(`<div id="game-2">
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -56,3 +59,15 @@ export const moduleGameSecondElement = getElementFromTemplate(`<div id="game-2">
     </div>
   </footer>
 </div>`);
+
+const gameAnswer = document.getElementsByClassName(`game__answer`);
+console.log(gameAnswer, gameAnswer.length);
+
+for (let i = 0; i < gameAnswer.length; i++) {
+  console.log(gameAnswer[i]);
+  gameAnswer[i].onclick = () => {
+    console.log('111');
+  };
+}
+
+console.log(gameAnswer.length);
