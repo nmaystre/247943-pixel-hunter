@@ -1,6 +1,8 @@
 import {getElementFromTemplate} from "./getElement";
+import {appPageShow} from "./appPageShow";
+import intro from "./intro";
 
-export const moduleStatsElement = getElementFromTemplate(`<div id="stats">
+const template = getElementFromTemplate(`<div id="stats">
   <header class="header">
     <div class="header__back">
       <button class="back">
@@ -120,3 +122,11 @@ export const moduleStatsElement = getElementFromTemplate(`<div id="stats">
     </div>
   </footer>
   </template>`);
+
+export default () => {
+  const currentPage = template.cloneNode(true);
+  currentPage.querySelector(`.back`).addEventListener(`click`, () => {
+    appPageShow(intro());
+  });
+  return currentPage;
+};

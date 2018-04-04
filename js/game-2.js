@@ -1,7 +1,7 @@
 import {getElementFromTemplate} from "./getElement";
 import {appPageShow} from "./appPageShow";
 import game3 from "./game-3";
-
+import intro from "./intro";
 
 const template = getElementFromTemplate(`<div id="game-2">
   <header class="header">
@@ -60,14 +60,27 @@ const template = getElementFromTemplate(`<div id="game-2">
   </footer>
 </div>`);
 
-const gameAnswer = document.getElementsByClassName(`game__answer`);
-console.log(gameAnswer, gameAnswer.length);
+export default () => {
+  const currentPage = template.cloneNode(true);
+  currentPage.addEventListener(`click`, () => {
+    const gameQuestion = currentPage.querySelectorAll(`.game__option`);
+    let isAllAnswered = true;
 
-for (let i = 0; i < gameAnswer.length; i++) {
-  console.log(gameAnswer[i]);
-  gameAnswer[i].onclick = () => {
-    console.log('111');
-  };
-}
+    for (let i = 0; i < gameQuestion.length; i++) {
+      const gameSelect = gameQuestion[i].querySelectorAll(`label input:checked`);
+      const isAnswered = gameSelect.length;
 
-console.log(gameAnswer.length);
+      if (!isAnswered) {
+        isAllAnswered = false;
+        break;
+      }
+    }
+    if (isAllAnswered) {
+      appPageShow(game3());
+    }
+  });
+  currentPage.querySelector(`.back`).addEventListener(`click`, () => {
+    appPageShow(intro());
+  });
+  return currentPage;
+};

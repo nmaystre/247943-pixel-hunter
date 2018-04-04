@@ -1,6 +1,7 @@
 import {getElementFromTemplate} from "./getElement";
 import {appPageShow} from "./appPageShow";
 import game2 from "./game-2";
+import intro from "./intro";
 
 const template = getElementFromTemplate(`<div id="game-1">
   <header class="header">
@@ -71,25 +72,27 @@ const template = getElementFromTemplate(`<div id="game-1">
 </div>`);
 
 export default () => {
-    const currentPage = template.cloneNode(true);
-    currentPage.addEventListener(`click`, () => {
-        const gameQuestion = currentPage.querySelectorAll(`.game__option`);
+  const currentPage = template.cloneNode(true);
+  currentPage.querySelector(`game__content`).addEventListener(`click`, () => {
+    const gameQuestion = currentPage.querySelectorAll(`.game__option`);
+    let isAllAnswered = true;
 
+    for (let i = 0; i < gameQuestion.length; i++) {
+      const gameSelect = gameQuestion[i].querySelectorAll(`label input:checked`);
+      const isAnswered = gameSelect.length;
 
-        let checkedGameSelect = 0;
-        for (let i = 0; i < gameQuestion.length; i++) {
-            const gameSelect = gameQuestion[i].querySelectorAll(`.game__answer`);
+      if (!isAnswered) {
+        isAllAnswered = false;
+        break;
+      }
+    }
 
-            for (let a = 0; a < gameSelect.length; a++) {
-                if (gameSelect[a].firstElementChild.checked === true) {
-                    checkedGameSelect = checkedGameSelect + 1;
-                }
-            }
-        }
-
-        if (checkedGameSelect === gameQuestion.length) {
-            appPageShow(game2());
-        }
-    });
-    return currentPage;
+    if (isAllAnswered) {
+      appPageShow(game2());
+    }
+  });
+  currentPage.querySelector(`.back`).addEventListener(`click`, () => {
+    appPageShow(intro());
+  });
+  return currentPage;
 };

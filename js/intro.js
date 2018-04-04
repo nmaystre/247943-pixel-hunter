@@ -1,6 +1,6 @@
 import {getElementFromTemplate} from "./getElement";
 import {appPageShow} from "./appPageShow.js";
-import game1 from './game-1.js';
+import greeting from './greeting.js';
 
 const template = getElementFromTemplate(`<div id="main" class="central__content">
     <div id="intro" class="intro">
@@ -20,11 +20,11 @@ const template = getElementFromTemplate(`<div id="main" class="central__content"
 </footer>`);
 
 export default () => {
-    const currentPage = template.cloneNode(true);
-    currentPage.querySelector(`.intro__asterisk`).addEventListener(`click`, () => {
-        appPageShow(game1());
-    });
-    return currentPage;
+  const currentPage = template.cloneNode(true);
+  currentPage.querySelector(`.intro__asterisk`).addEventListener(`click`, () => {
+    appPageShow(greeting());
+  });
+  return currentPage;
 };
 
 

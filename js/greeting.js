@@ -30,9 +30,8 @@ const template = getElementFromTemplate(`<div id="greeting">
 
 export default () => {
   const currentPage = template.cloneNode(true);
-    currentPage.querySelector(`.greeting__continue`).addEventListener(`click`, () => {
-        appPageShow(rules());
-    });
+  currentPage.querySelector(`.greeting__continue`).addEventListener(`click`, () => {
+    appPageShow(rules());
+  });
   return currentPage;
 };
-

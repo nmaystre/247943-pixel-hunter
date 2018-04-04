@@ -1,7 +1,7 @@
 import {getElementFromTemplate} from "./getElement";
 import {appPageShow} from "./appPageShow.js";
 import game1 from "./game-1";
-
+import intro from "./intro";
 
 const template = getElementFromTemplate(`<div id="rules">
   <header class="header">
@@ -41,18 +41,18 @@ const template = getElementFromTemplate(`<div id="rules">
 </div>`);
 
 export default () => {
-    const currentPage = template.cloneNode(true);
-    currentPage.querySelector(`.rules__input`).addEventListener(`input`, (e) => {
-        if (e.target.value.length > 2) {
-            currentPage.querySelector(`.continue`).disabled = false;
-        }
-    });
-    currentPage.querySelector(`.continue`).addEventListener(`click`, () => {
-        appPageShow(game1());
-    });
-    return currentPage;
+  const currentPage = template.cloneNode(true);
+  currentPage.querySelector(`.rules__input`).addEventListener(`input`, (e) => {
+    if (e.target.value.length > 2) {
+      currentPage.querySelector(`.continue`).disabled = false;
+    }
+  });
+  currentPage.querySelector(`.continue`).addEventListener(`click`, () => {
+    appPageShow(game1());
+  });
+  currentPage.querySelector(`.back`).addEventListener(`click`, () => {
+    appPageShow(intro());
+  });
+  return currentPage;
 };
-
-
-
 
