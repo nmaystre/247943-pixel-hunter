@@ -11,6 +11,16 @@ const mqpacker = require('css-mqpacker');
 const minify = require('gulp-csso');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
+const mocha = require('gulp-mocha');
+
+gulp.task('test', function () {
+  return gulp
+    .src(['js/**/*.test.js'], { read: false })
+    .pipe(mocha({
+      compilers: ['js:babel-register'], // Включим поддержку "import/export" в Mocha тестах
+      reporter: 'spec'       // Вид в котором я хочу отображать результаты тестирования
+    }));
+});
 
 gulp.task('style', function () {
   return gulp.src('sass/style.scss')
