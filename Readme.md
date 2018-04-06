@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Наталья Майстренко](https://up.htmlacademy.ru/ecmascript/4/user/247943).
-* Наставник: `Неизвестно`.
+* Наставник: [Саша Ивашкин](https://up.htmlacademy.ru/ecmascript/4/user/7280).
 
 ---
 
