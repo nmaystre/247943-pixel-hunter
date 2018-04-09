@@ -73,7 +73,7 @@ const template = getElementFromTemplate(`<div id="game-1">
 
 export default () => {
   const currentPage = template.cloneNode(true);
-  currentPage.querySelector(`game__content`).addEventListener(`click`, () => {
+  currentPage.querySelector(`.game__content`).addEventListener(`click`, () => {
     const gameQuestion = currentPage.querySelectorAll(`.game__option`);
     let isAllAnswered = true;
 
