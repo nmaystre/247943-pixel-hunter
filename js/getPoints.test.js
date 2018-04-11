@@ -1,60 +1,37 @@
 import {assert} from "chai";
 import {getAnswerPoints, getAllGamePoints} from "./getPoints";
-mocha.setup(`tdd`);
-
-// const assert = chai.assert;
 
 describe(`Points achievements:`, () => {
 
-  // it(`Function should take numbers only`, () => {
-  //   assert.isNumber(gameAnswer);
-  // });
-
-  // Правильный быстрый, 3 жизни
-  // Правильный быстрый 2 жизни
-  // Правильный быстрый 1 жизнь
-  // Правильный медленный 3 жизни
-  // Правильный медленный 2 жизни
-  // Правильный медленный 1 жизнь
-  // Неправильный ответ
-
-  it(`User should answer 10 questions`, () => {
-
-  });
-
-  it(`User answers question correctly and fast`, () => {
-
-  });
-
   it(`User answers question correctly and moderate`, () => {
-
+    let answer = {time: 15, correct: true};
+    assert.equal(getAnswerPoints(answer), 100);
   });
 
   it(`User answers question correctly and slow`, () => {
-
+    let answer = {time: 25, correct: true};
+    assert.equal(getAnswerPoints(answer), 50);
   });
 
-  it(`User answers question incorrectly`, () => {
+  it(`User answers question correctly and fast`, () => {
+    let answer = {time: 5, correct: true};
+    assert.equal(getAnswerPoints(answer), 150);
+  });
 
+
+  it(`User answers question incorrectly`, () => {
+    let answer = {time: 5, correct: false};
+    assert.equal(getAnswerPoints(answer), 0);
+  });
+
+  it(`User answers not all questions`, () => {
+    let answerArray = [{time: 5, correct: false}, {time: 5, correct: false}];
+    assert.equal(getAllGamePoints(answerArray, 0), -1);
+  });
+
+  it(`User answers 10 questions correctly`, () => {
+    let answerArray = [{time: 15, correct: true}, {time: 15, correct: true}, {time: 15, correct: true}, {time: 15, correct: true}, {time: 15, correct: true}, {time: 15, correct: true}, {time: 15, correct: true}, {time: 15, correct: true}, {time: 15, correct: true}, {time: 15, correct: true}];
+    assert.equal(getAllGamePoints(answerArray, 3), 1150);
   });
 
 });
-
-mocha.run();
-
-
-class math{
-  function sum(a, b)
-  functin div(a, b)
-  function mod(a, b)
-}
-
-
-class mathTest{
-  function sumTest() {
-    var math = new Math();
-    var actual = math.sum(1, 2);
-
-    assert(3, actual, "wrong sum");
-  }
-}
