@@ -9,6 +9,9 @@ export const getTimer = (seconds) => {
     finished: false,
     time: seconds,
     tick: () => {
+      if (seconds === 0) {
+        return seconds;
+      }
       seconds -= 1;
       return seconds;
     }
@@ -19,3 +22,6 @@ export const getTimer = (seconds) => {
   }
   return timer;
 };
+
+const timer1 = getTimer(3);
+timer1.tick();
