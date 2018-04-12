@@ -1,5 +1,5 @@
-import {getElementFromTemplate} from "./getElement";
-import {appPageShow} from "./appPageShow.js";
+import {getElementFromTemplate} from "../data/getElement";
+import {appPageShow} from "../data/appPageShow.js";
 import game1 from "./game-1";
 import intro from "./intro";
 

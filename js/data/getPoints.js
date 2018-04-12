@@ -6,22 +6,15 @@ const SLOW_ANSWER_FINE = 50;
 const LIFE_BONUS = 50;
 
 export const getAnswerPoints = (answer) => {
-
   let result = 0;
   if (!answer.correct) {
     return result;
   }
-
-  result = CORRECT_ANSWER_BONUS;
-  switch (true) {
-    case (answer.time <= FAST_ANSWER):
-      result += FAST_ANSWER_BONUS;
-      break;
-    case (answer.time > SLOW_ANSWER):
-      result -= SLOW_ANSWER_FINE;
-      break;
-    default:
-      break;
+  result += CORRECT_ANSWER_BONUS;
+  if (answer.time <= FAST_ANSWER) {
+    result += FAST_ANSWER_BONUS;
+  } else if (answer.time > SLOW_ANSWER) {
+    result -= SLOW_ANSWER_FINE;
   }
   return result;
 };

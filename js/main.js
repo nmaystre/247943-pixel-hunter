@@ -1,4 +1,4 @@
-import {appPageShow} from "./appPageShow.js";
-import intro from './intro.js';
+import {appPageShow} from "./data/appPageShow.js";
+import intro from './components/intro.js';
 
 appPageShow(intro());
