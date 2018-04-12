@@ -11,15 +11,16 @@ export const getAnswerPoints = (answer) => {
   if (!answer.correct) {
     return result;
   }
+
+  result = CORRECT_ANSWER_BONUS;
   switch (true) {
     case (answer.time <= FAST_ANSWER):
-      result = (CORRECT_ANSWER_BONUS + FAST_ANSWER_BONUS);
+      result += FAST_ANSWER_BONUS;
       break;
     case (answer.time > SLOW_ANSWER):
-      result = (CORRECT_ANSWER_BONUS - SLOW_ANSWER_FINE);
+      result -= SLOW_ANSWER_FINE;
       break;
     default:
-      result = CORRECT_ANSWER_BONUS;
       break;
   }
   return result;
