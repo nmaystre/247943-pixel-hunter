@@ -9,21 +9,14 @@ export const getTimer = (seconds) => {
   let timer = {
     time: seconds,
     tick() {
-      this.time -= 1;
-      if (this.time <= 0) {
-        return {
-          finished: true,
-          time: 0
-        };
+      if (this.time > 0) {
+        this.time -= 1;
       }
       return {
-        finished: false,
+        finished: (this.time === 0),
         time: this.time
       };
     }
   };
   return timer;
 };
-
-const timer1 = getTimer(3);
-timer1.tick();
