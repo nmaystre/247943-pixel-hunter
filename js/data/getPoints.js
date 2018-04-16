@@ -20,13 +20,13 @@ export const getAnswerPoints = (answer) => {
 };
 
 export const getAllGamePoints = (answerArray, lifeLeftCount) => {
-  let sumPoints = 0;
-  for (let i = 0; i < answerArray.length; i++) {
-    sumPoints += getAnswerPoints(answerArray[i]);
-  }
-  sumPoints += LIFE_BONUS * lifeLeftCount;
   if (answerArray.length < 10) {
-    sumPoints = -1;
+    return -1;
   }
+  let sumPoints = answerArray.reduce((previousValue, currentValue) => {
+    return previousValue + getAnswerPoints(currentValue);
+  }, 0);
+  sumPoints += LIFE_BONUS * lifeLeftCount;
+
   return sumPoints;
 };

@@ -5,21 +5,23 @@ export const getTimer = (seconds) => {
   if (seconds < 0) {
     throw new Error(`seconds should not be negative value`);
   }
+
   let timer = {
-    finished: false,
     time: seconds,
-    tick: () => {
-      if (seconds === 0) {
-        return seconds;
+    tick() {
+      this.time -= 1;
+      if (this.time <= 0) {
+        return {
+          finished: true,
+          time: 0
+        };
       }
-      seconds -= 1;
-      return seconds;
+      return {
+        finished: false,
+        time: this.time
+      };
     }
   };
-  if (timer.time === 0) {
-    timer.finished = true;
-    return timer;
-  }
   return timer;
 };
 
