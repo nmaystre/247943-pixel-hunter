@@ -1,5 +1,5 @@
-import {getElementFromTemplate} from "./getElement";
-import {appPageShow} from "./appPageShow";
+import {getElementFromTemplate} from "../data/getElement";
+import {appPageShow} from "../data/appPageShow";
 import game2 from "./game-2";
 import intro from "./intro";
 

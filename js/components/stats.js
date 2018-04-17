@@ -1,5 +1,5 @@
-import {getElementFromTemplate} from "./getElement";
-import {appPageShow} from "./appPageShow";
+import {getElementFromTemplate} from "../data/getElement";
+import {appPageShow} from "../data/appPageShow";
 import intro from "./intro";
 
 const template = getElementFromTemplate(`<div id="stats">

@@ -1,5 +1,5 @@
-import {getElementFromTemplate} from "./getElement";
-import {appPageShow} from "./appPageShow.js";
+import {getElementFromTemplate} from "../data/getElement";
+import {appPageShow} from "../data/appPageShow.js";
 import rules from './rules.js';
 
 const template = getElementFromTemplate(`<div id="greeting">
