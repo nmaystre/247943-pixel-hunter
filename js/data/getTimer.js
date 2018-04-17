@@ -6,7 +6,7 @@ export const getTimer = (seconds) => {
     throw new Error(`seconds should not be negative value`);
   }
 
-  let timer = {
+  return {
     time: seconds,
     tick() {
       if (this.time > 0) {
@@ -18,5 +18,4 @@ export const getTimer = (seconds) => {
       };
     }
   };
-  return timer;
 };
