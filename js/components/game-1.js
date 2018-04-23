@@ -2,6 +2,8 @@ import {getElementFromTemplate} from "../data/getElement";
 import {appPageShow} from "../data/appPageShow";
 import game2 from "./game-2";
 import intro from "./intro";
+import {headerTemplate} from "./__header";
+import {headerData} from "./data/data";
 
 const gameTemplate = getElementFromTemplate(`
 <div id="game-1">
@@ -34,8 +36,12 @@ const gameTemplate = getElementFromTemplate(`
     </div>
 </div>`);
 
+const container = document.querySelector(`#game-1`);
+container.appendChild(getElementFromTemplate(headerTemplate(headerData)));
+
+
 export default () => {
-  const currentPage = template.cloneNode(true);
+  const currentPage = gameTemplate.cloneNode(true);
   currentPage.querySelector(`.game__content`).addEventListener(`click`, () => {
     const gameQuestion = currentPage.querySelectorAll(`.game__option`);
     let isAllAnswered = true;

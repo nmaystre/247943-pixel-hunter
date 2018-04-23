@@ -13,7 +13,8 @@ const template = getElementFromTemplate(`
 export default () => {
   const currentPage = template.cloneNode(true);
   currentPage.querySelector(`.intro__asterisk`).addEventListener(`click`, () => {
-    appPageShow(greeting());
+    // appPageShow(greeting());
+    console.log('111');
   });
   return currentPage;
 };
