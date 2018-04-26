@@ -1,9 +1,11 @@
 import {getElementFromTemplate} from "../data/getElement";
 import {appPageShow} from "../data/appPageShow";
 import intro from "./intro";
+import {headerData} from "../data/data";
+import {footerTemplate} from "../components/__footer";
+import {headerTemplate} from "../components/__header";
 
-const template = getElementFromTemplate(`
-<div id="stats">
+const template = getElementFromTemplate(`<div id="stats">
   <div class="result">
     <h1>Победа!</h1>
     <table class="result__table">
@@ -108,6 +110,9 @@ const template = getElementFromTemplate(`
 
 export default () => {
   const currentPage = template.cloneNode(true);
+  currentPage.insertBefore(getElementFromTemplate(headerTemplate(headerData)), currentPage.firstChild);
+  currentPage.appendChild(getElementFromTemplate(footerTemplate()));
+
   currentPage.querySelector(`.back`).addEventListener(`click`, () => {
     appPageShow(intro());
   });

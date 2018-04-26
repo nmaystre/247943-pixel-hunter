@@ -1,5 +1,8 @@
+export const mainContainer = document.querySelector(`#main`);
+
 export const getElementFromTemplate = (htmlTemplate) => {
-  const htmlContent = document.createElement(`div`);
-  htmlContent.innerHTML = htmlTemplate;
-  return htmlContent.firstChild;
+  const container = document.createElement(`div`);
+  container.innerHTML = htmlTemplate;
+  return container.firstChild;
 };
+

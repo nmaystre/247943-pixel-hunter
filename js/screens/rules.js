@@ -2,9 +2,11 @@ import {getElementFromTemplate} from "../data/getElement";
 import {appPageShow} from "../data/appPageShow.js";
 import game1 from "./game-1";
 import intro from "./intro";
+import {headerTemplate} from "../components/__header";
+import {headerData} from "../data/data";
+import {footerTemplate} from "../components/__footer";
 
-const template = getElementFromTemplate(`
-<div id="rules">
+const template = getElementFromTemplate(`<div id="rules">
   <div class="rules">
     <h1 class="rules__title">Правила</h1>
     <p class="rules__description">Угадай 10 раз для каждого изображения фото <img
@@ -25,6 +27,9 @@ const template = getElementFromTemplate(`
 
 export default () => {
   const currentPage = template.cloneNode(true);
+  currentPage.insertBefore(getElementFromTemplate(headerTemplate(headerData)), currentPage.firstChild);
+  currentPage.appendChild(getElementFromTemplate(footerTemplate()));
+
   currentPage.querySelector(`.rules__input`).addEventListener(`input`, (e) => {
     if (e.target.value.length > 2) {
       currentPage.querySelector(`.continue`).disabled = false;
@@ -39,4 +44,5 @@ export default () => {
   });
   return currentPage;
 };
+
 
