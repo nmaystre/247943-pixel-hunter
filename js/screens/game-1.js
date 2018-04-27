@@ -1,20 +1,21 @@
-import {getElementFromTemplate} from "../data/getElement";
+import {getElementFromTemplate, mainContainer} from "../data/getElement";
 import {appPageShow} from "../data/appPageShow";
 import game2 from "./game-2";
 import intro from "./intro";
-import {headerData, gameData} from "../data/data";
-import {footerTemplate} from "../components/__footer";
-import {headerTemplate} from "../components/__header";
+import {gameData} from "../data/data";
+import {getFooter} from "../components/__footer";
+import {getHeader} from "../components/__header";
 import {gameTemplate} from "../components/__game";
 
 const template = getElementFromTemplate(`<div id="game-1"></div>`);
 
-export default () => {
-  const currentPage = template.cloneNode(true);
-  currentPage.insertBefore(getElementFromTemplate(headerTemplate(headerData)), currentPage.firstChild);
-  currentPage.appendChild(getElementFromTemplate(gameTemplate(gameData[0])));
-  currentPage.appendChild(getElementFromTemplate(footerTemplate()));
+getHeader(mainContainer);
+getFooter(mainContainer);
 
+export default () => {
+
+  const currentPage = template.cloneNode(true);
+  currentPage.appendChild(getElementFromTemplate(gameTemplate(gameData[0])));
   currentPage.querySelector(`.game__content`).addEventListener(`click`, () => {
     const gameQuestion = currentPage.querySelectorAll(`.game__option`);
     let isAllAnswered = true;
@@ -32,7 +33,7 @@ export default () => {
     }
   }
   );
-  currentPage.querySelector(`.back`).addEventListener(`click`, () => {
+  document.querySelector(`.back`).addEventListener(`click`, () => {
     appPageShow(intro());
   });
   return currentPage;

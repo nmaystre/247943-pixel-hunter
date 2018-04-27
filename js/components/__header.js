@@ -1,3 +1,6 @@
+import {getElementFromTemplate} from "../data/getElement";
+import {headerData} from "../data/data";
+
 export const headerTemplate = (headerState) => `<header class="header">
 <div class="header__back">
   <button class="back">
@@ -15,3 +18,7 @@ export const headerTemplate = (headerState) => `<header class="header">
       .join(``)}
   </div>
 </header>`;
+
+export const getHeader = (container) => {
+  container.insertAdjacentElement(`beforebegin`, getElementFromTemplate(headerTemplate(headerData)));
+};

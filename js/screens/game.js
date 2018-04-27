@@ -36,3 +36,4 @@ export const getGameScreen = (screen, header) => {
   });
   return currentPage;
 };
+
