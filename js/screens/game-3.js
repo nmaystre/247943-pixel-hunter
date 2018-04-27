@@ -3,9 +3,9 @@ import {appPageShow} from "../data/appPageShow";
 import statistics from "./statistics";
 import intro from "./intro";
 import {gameData, headerData} from "../data/data";
-import {footerTemplate} from "../components/__footer";
-import {headerTemplate} from "../components/__header";
-import {gameTemplate} from "../components/__game";
+import {footerTemplate} from "../components/footer";
+import {headerTemplate} from "../components/header";
+import {gameTemplate} from "../components/game";
 
 const template = getElementFromTemplate(`<div id="game-3"></div>`);
 

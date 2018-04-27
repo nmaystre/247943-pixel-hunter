@@ -1,16 +1,16 @@
-import {stats} from "../components/__stats";
+import {stats} from "./stats";
 
 export const gameTemplate = (gameState) => {
-  let test1 = taskTemplate(gameState);
+  let gameType = taskTemplate(gameState);
 
   if (gameState.type === `tinder-like`) {
-    test1 = (`${test1}${gameOneImg(gameState)}`);
+    gameType = (`${gameType}${gameOneImg(gameState)}`);
   } else if (gameState.type === `one-of-three`) {
-    test1 = (`${test1}${gameThreeImg(gameState)}`);
+    gameType = (`${gameType}${gameThreeImg(gameState)}`);
   } else {
-    test1 = (`${test1}${gameTwoImg(gameState)}`);
+    gameType = (`${gameType}${gameTwoImg(gameState)}`);
   }
-  return `<div class="game">${test1}${stats}</div>`;
+  return `<div class="game">${gameType}${stats}</div>`;
 };
 
 export const taskTemplate = (gameState) =>

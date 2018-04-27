@@ -2,9 +2,9 @@ import {getElementFromTemplate} from "../data/getElement";
 import {appPageShow} from "../data/appPageShow.js";
 import game1 from "./game-1";
 import intro from "./intro";
-import {headerTemplate} from "../components/__header";
+import {headerTemplate} from "../components/header";
 import {headerData} from "../data/data";
-import {footerTemplate} from "../components/__footer";
+import {footerTemplate} from "../components/footer";
 
 const template = getElementFromTemplate(`<div id="rules">
   <div class="rules">
@@ -27,19 +27,19 @@ const template = getElementFromTemplate(`<div id="rules">
 
 export default () => {
   const currentPage = template.cloneNode(true);
-  currentPage.insertBefore(getElementFromTemplate(headerTemplate(headerData)), currentPage.firstChild);
-  currentPage.appendChild(getElementFromTemplate(footerTemplate()));
 
   currentPage.querySelector(`.rules__input`).addEventListener(`input`, (e) => {
     if (e.target.value.length > 2) {
       currentPage.querySelector(`.continue`).disabled = false;
+    } else {
+      currentPage.querySelector(`.continue`).disabled = true;
     }
   });
   currentPage.querySelector(`.rules__form`).addEventListener(`submit`, (e) => {
     e.preventDefault();
     appPageShow(game1());
   });
-  currentPage.querySelector(`.back`).addEventListener(`click`, () => {
+  document.querySelector(`.back`).addEventListener(`click`, () => {
     appPageShow(intro());
   });
   return currentPage;
