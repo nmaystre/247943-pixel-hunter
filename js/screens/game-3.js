@@ -2,18 +2,14 @@ import {getElementFromTemplate} from "../data/getElement";
 import {appPageShow} from "../data/appPageShow";
 import statistics from "./statistics";
 import intro from "./intro";
-import {gameData, headerData} from "../data/data";
-import {footerTemplate} from "../components/footer";
-import {headerTemplate} from "../components/header";
+import {gameData} from "../data/data";
 import {gameTemplate} from "../components/game";
 
 const template = getElementFromTemplate(`<div id="game-3"></div>`);
 
 export default () => {
   const currentPage = template.cloneNode(true);
-  currentPage.insertBefore(getElementFromTemplate(headerTemplate(headerData)), currentPage.firstChild);
   currentPage.appendChild(getElementFromTemplate(gameTemplate(gameData[2])));
-  currentPage.appendChild(getElementFromTemplate(footerTemplate()));
 
   currentPage.querySelector(`.game__content`).addEventListener(`click`, (event) => {
     const gameAnswer = currentPage.querySelectorAll(`.game__option`);

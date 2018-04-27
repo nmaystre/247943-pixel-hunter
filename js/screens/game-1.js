@@ -3,14 +3,12 @@ import {appPageShow} from "../data/appPageShow";
 import game2 from "./game-2";
 import intro from "./intro";
 import {gameData} from "../data/data";
-import {getFooter} from "../components/footer";
 import {getHeader} from "../components/header";
 import {gameTemplate} from "../components/game";
 
 const template = getElementFromTemplate(`<div id="game-1"></div>`);
 
 getHeader(mainContainer);
-getFooter(mainContainer);
 
 export default () => {
 
